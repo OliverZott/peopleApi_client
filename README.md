@@ -9,11 +9,13 @@
     php bin/console server:run
     ```
 3. [Turn on the People API](https://developers.google.com/people/quickstart/php#step_1_turn_on_the)
-
+    and save `credentials.json` in project folder
 4. Install the Google Client Library
     ```angular2
     composer require google/apiclient:"^2.0"
     ```
+    1. Problem: `Fatal error: Allowed memory size of 1610612736 bytes exhausted`
+    1. Solution: in `sudo gedit /opt/lampp/etc/php.ini` change `memory_limit = 2G`
 
 **ToDo:**
 1. [Authorize Requests](https://developers.google.com/people/v1/how-tos/authorizing)
