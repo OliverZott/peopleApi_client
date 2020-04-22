@@ -12,7 +12,7 @@
 
 4. Install the Google Client Library
     ```angular2
-    composer require google/apiclient:^2.0
+    composer require google/apiclient:"^2.0"
     ```
 
 **ToDo:**
