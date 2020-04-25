@@ -17,8 +17,15 @@
     1. Problem: `Fatal error: Allowed memory size of 1610612736 bytes exhausted`
     1. Solution: in `sudo gedit /opt/lampp/etc/php.ini` change `memory_limit = 2G`
 
+5. Example: Google_Client
+    1. Problem 1: Can't find credentials.json
+        
+        Solution: the absolute path required (???) 
+    1. Problem 2: Warning: Use of undefined constant STDIN - assumed 'STDIN' (this will throw an Error in a future version of PHP)
+   
+        Solution: define('STDIN',fopen("php://stdin","r"));
 **ToDo:**
-1. [Authorize Requests](https://developers.google.com/people/v1/how-tos/authorizing)
+1. [Authorize Requests](https://developers.google.com/people/v1/how-tos/authorizing) ??
 2. 
 
 

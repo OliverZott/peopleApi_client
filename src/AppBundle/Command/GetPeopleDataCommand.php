@@ -1,69 +1,36 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Command;
 
 use Google_Client;
-use Google_Service_Books;
 use Google_Service_PeopleService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class DefaultController extends Controller
+// use function AppBundle\Controller\getClient;
+
+class GetPeopleDataCommand extends ContainerAwareCommand
 {
     /**
-     * @Route("/", name="homepage")
-     * @param Request $request
-     * @return Response
+     * {@inheritdoc}
      */
-    public function indexAction(Request $request)
+    protected function configure()
     {
-        //var_dump(phpinfo());
-        //var_dump($this->get('kernel')->getProjectDir());die;
+        $this
+            ->setName('app:get_people_data_command')
+            ->setDescription('Hello PhpStorm');
+    }
 
-
-
-        /*
-        require __DIR__ . '/vendor/autoload.php';
-        require_once 'google-api-php-client/autoload.php';
-
-        // checks php context (php cli / php module)
-
-        if (php_sapi_name() != 'cli') {
-            throw new Exception('This application must be run on the command line.');
-        }
-        */
-
-
-        /**
-         * Google Books Example (NOT WORKING?!)
-         */
-        /*
-        $client = new Google_Client();
-        $client->setApplicationName("Client_Library_Examples");
-        $client->setDeveloperKey("YOUR_APP_KEY");
-
-        $service = new Google_Service_Books($client);
-        $optParams = array('filter' => 'free-ebooks');
-        $results = $service->volumes->listVolumes('', $optParams);
-        //$results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
-
-        foreach ($results->getItems() as $item) {
-            echo $item['volumeInfo']['title'], "<br /> \n";
-        }
-        */
-
-        /**
-         * Returns an authorized API client.
-         * @return Google_Client the authorized client object
-         */
-
-        /*
+    /**
+     * {@inheritdoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
         function getClient()
         {
 
-            define('STDIN',fopen("php://stdin","r"));
+            //  define('STDIN',fopen("php://stdin","r"));
 
             $client = new Google_Client();
             $client->setApplicationName('People API PHP Quickstart');
@@ -138,13 +105,5 @@ class DefaultController extends Controller
                 }
             }
         }
-    //*/
-        
-
-
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
     }
 }
