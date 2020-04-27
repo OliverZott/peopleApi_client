@@ -15,7 +15,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-bundle": "^1.10",
         "doctrine/orm": "^2.5",
         "google/apiclient": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
