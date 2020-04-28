@@ -25,6 +25,8 @@ class GreetService
      */
     public function getUri(Request $request): string
     {
+        // var_dump($request->getUri());
         return $request->getUri();
+
     }
 }

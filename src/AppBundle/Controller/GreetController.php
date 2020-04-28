@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Service\GreetService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -22,12 +23,18 @@ class GreetController extends Controller
 
     /**
      * @Route("/greetz", name="greetz")
-     * @param $name
+     * @param Request $request
      * @return Response
      */
-    public function indexAction($name)
+    public function indexAction(Request $request)
     {
 
-        return $this->render('', array('name' => $name));
+        $name = $this->greetService->getNameFromRequest($request);
+        $uri = $this->greetService->getUri($request);
+
+        return $this->render('greetings/greet.html.twig', array(
+            'name' => $name,
+            'uri' => $uri,
+        ));
     }
 }
