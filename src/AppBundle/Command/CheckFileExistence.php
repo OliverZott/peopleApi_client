@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SyncContactsCommand extends ContainerAwareCommand
+class CheckFileExistence extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}
@@ -15,7 +15,7 @@ class SyncContactsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:sync_contacts_command')
+            ->setName('app:check_file_existence_command')
             ->setDescription('Synchronizing contacts via google PeopleAPI')
             ->addArgument('fileName', InputArgument::REQUIRED);
     }
